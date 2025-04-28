@@ -4,6 +4,14 @@ import torch.nn.functional as F
 
 class TripletLoss(nn.Module):
     def __init__(self, margin=1.0, distance_metric='euclidean', normalize_embeddings=True, weight_fn=None):
+        """   
+        Args:
+            margin: positive와 negative 사이의 최소 거리
+            distance_metric: euclidean or cosine
+            normalize_embeddings: 임베딩을 L2 정규화할지 
+            weight_fn: 트리플렛 가중치 계산 함수 (None이면 모든 트리플렛에 동일한 가중치)
+        """
+        
         super(TripletLoss, self).__init__() 
         self.margin = margin 
         self.distance_metric = distance_metric 
@@ -32,14 +40,15 @@ class TripletLoss(nn.Module):
         if weights is not None:
             losses = losses * weights 
         elif self.weight_fn is not None:
+            # 동적 가중치 
             weights = self.weight_fn(pos_dist, neg_dist)
             losses = losses * weights 
 
         non_zero = (losses > 0).float().sum() + 1e-8
         return losses.sum() / non_zero, {
-            'pos_dist_mean': pos_dist.mean().item(),
-            'neg_dist_mean': neg_dist.mean().item(),
-            'active_triplets': (losses > 0).float().sum().item() 
+            "pos_dist_mean": pos_dist.mean().item(),
+            "neg_dist_mean": neg_dist.mean().item(),
+            "active_triplets": (losses > 0).float().sum().item() 
         }
 
 class BatchHardTripletLoss(nn.Module):
@@ -123,6 +132,7 @@ class BatchHardTripletLoss(nn.Module):
             relevant_negative_dist = hardest_negative_dist
             
         elif self.mining_strategy == 'semi_hard':
+            # anchor-positive 보다 멀지만 margin 보다는 가까운 negative 
             semi_hard_mask = negative_mask & (pairwise_dist > hardest_positive_dist.unsqueeze(1)) & \
                              (pairwise_dist < hardest_positive_dist.unsqueeze(1) + self.margin)
             
@@ -159,10 +169,10 @@ class BatchHardTripletLoss(nn.Module):
         loss = triplet_loss.mean() if active_triplets > 0 else torch.tensor(0.0, device=embeddings.device)
         
         metrics = {
-            'pos_dist_mean': hardest_positive_dist.mean().item(),
-            'neg_dist_mean': relevant_negative_dist.mean().item(),
-            'active_triplets': active_triplets.item(),
-            'active_ratio': (active_triplets / batch_size).item()
+            "pos_dist_mean": hardest_positive_dist.mean().item(),
+            "neg_dist_mean": relevant_negative_dist.mean().item(),
+            "active_triplets": active_triplets.item(),
+            "active_ratio": (active_triplets / batch_size).item()
         }
         
         return loss, metrics
