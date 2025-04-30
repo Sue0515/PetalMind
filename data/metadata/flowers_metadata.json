@@ -1,0 +1,132 @@
+[
+    {
+      "id": "flower1",
+      "name": "Pink Peony",
+      "description": "A large, round-petaled flower with a lush, full bloom in soft pink. Peonies symbolize prosperity and are known for their strong, sweet fragrance.",
+      "size": "large",
+      "color": "pink",
+      "season": ["spring", "early summer"],
+      "attributes": ["fragrant", "romantic", "lush"],
+      "image_url": "/flowers/pink_peony.jpg"
+    },
+    {
+      "id": "flower2",
+      "name": "Red Rose",
+      "description": "A classic flower with velvety red petals and a distinctive shape. Roses are the universal symbol of love and passion.",
+      "size": "large",
+      "color": "red",
+      "season": ["spring", "summer", "fall"],
+      "attributes": ["romantic", "classic", "thorny"],
+      "image_url": "/flowers/red_rose.jpg"
+    },
+    {
+      "id": "flower3",
+      "name": "Blue Hydrangea",
+      "description": "A large, round cluster of small flowers in a striking blue color. Hydrangeas are known for their voluminous appearance and color that can change based on soil pH.",
+      "size": "large",
+      "color": "blue",
+      "season": ["summer"],
+      "attributes": ["voluminous", "cluster", "dramatic"],
+      "image_url": "/flowers/blue_hydrangea.jpg"
+    },
+    {
+      "id": "flower4",
+      "name": "Yellow Sunflower",
+      "description": "A large, bold flower with bright yellow petals surrounding a dark center. Sunflowers are known for their cheerful appearance and tendency to turn toward the sun.",
+      "size": "large",
+      "color": "yellow",
+      "season": ["summer", "fall"],
+      "attributes": ["bold", "cheerful", "tall"],
+      "image_url": "/flowers/yellow_sunflower.jpg"
+    },
+    {
+      "id": "flower5",
+      "name": "Purple Dahlia",
+      "description": "A complex flower with many layered petals in a rich purple hue. Dahlias are known for their intricate petal arrangements and wide variety of colors and forms.",
+      "size": "large",
+      "color": "purple",
+      "season": ["summer", "fall"],
+      "attributes": ["complex", "geometric", "dramatic"],
+      "image_url": "/flowers/purple_dahlia.jpg"
+    },
+    {
+      "id": "flower6",
+      "name": "White Tulip",
+      "description": "An elegant, cup-shaped flower with clean white petals. Tulips are known for their simple, refined form and association with spring.",
+      "size": "medium",
+      "color": "white",
+      "season": ["spring"],
+      "attributes": ["elegant", "simple", "clean"],
+      "image_url": "/flowers/white_tulip.jpg"
+    },
+    {
+      "id": "flower7",
+      "name": "Lavender Freesia",
+      "description": "A delicate, tubular flower with a sweet scent and soft lavender color. Freesias are known for their fragrance and graceful stems with multiple buds.",
+      "size": "medium",
+      "color": "purple",
+      "season": ["spring", "summer"],
+      "attributes": ["fragrant", "delicate", "graceful"],
+      "image_url": "/flowers/lavender_freesia.jpg"
+    },
+    {
+      "id": "flower8",
+      "name": "Coral Ranunculus",
+      "description": "A medium-sized flower with layers of delicate petals in a vibrant coral color. Ranunculus are known for their rose-like appearance and paper-thin petals.",
+      "size": "medium",
+      "color": "orange",
+      "season": ["spring"],
+      "attributes": ["layered", "delicate", "vibrant"],
+      "image_url": "/flowers/coral_ranunculus.jpg"
+    },
+    {
+      "id": "flower9",
+      "name": "Yellow Daffodil",
+      "description": "A cheerful spring flower with a distinctive trumpet-shaped center surrounded by petals, usually in bright yellow. Daffodils symbolize rebirth and new beginnings.",
+      "size": "medium",
+      "color": "yellow",
+      "season": ["spring"],
+      "attributes": ["cheerful", "trumpet-shaped", "spring"],
+      "image_url": "/flowers/yellow_daffodil.jpg"
+    },
+    {
+      "id": "flower10",
+      "name": "Baby's Breath",
+      "description": "Tiny white flowers on delicate, branching stems. Baby's breath is commonly used as a filler in floral arrangements, adding a soft, cloud-like texture.",
+      "size": "small",
+      "color": "white",
+      "season": ["spring", "summer", "fall"],
+      "attributes": ["filler", "delicate", "airy"],
+      "image_url": "/flowers/babys_breath.jpg"
+    },
+    {
+      "id": "flower11",
+      "name": "Pink Wax Flower",
+      "description": "Small, star-shaped pink flowers on woody stems. Wax flowers are known for their long-lasting nature and waxy texture, making them excellent accent flowers.",
+      "size": "small",
+      "color": "pink",
+      "season": ["spring", "summer"],
+      "attributes": ["long-lasting", "waxy", "accent"],
+      "image_url": "/flowers/pink_wax_flower.jpg"
+    },
+    {
+      "id": "flower12",
+      "name": "White Chamomile",
+      "description": "Small, daisy-like flowers with white petals and yellow centers. Chamomiles are known for their simple, cheerful appearance and medicinal properties.",
+      "size": "small",
+      "color": "white",
+      "season": ["spring", "summer"],
+      "attributes": ["daisy-like", "simple", "cheerful"],
+      "image_url": "/flowers/white_chamomile.jpg"
+    },
+    {
+      "id": "flower13",
+      "name": "Blue Forget-me-not",
+      "description": "Tiny, five-petaled blue flowers with yellow centers. Forget-me-nots are known for their delicate appearance and symbolic meaning of remembrance and true love.",
+      "size": "small",
+      "color": "blue",
+      "season": ["spring", "summer"],
+      "attributes": ["tiny", "delicate", "romantic"],
+      "image_url": "/flowers/blue_forget_me_not.jpg"
+    }
+  ]
