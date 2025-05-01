@@ -2,12 +2,14 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-class CrossAttentionRecommender(nn.Module):
-    def __init__(self, dim=512, heads=8, dropout=0.1):
-        super().__init__() 
-        self.dim = dim 
+from typing import Optional 
+
+class CrossAttentionLayer(nn.Module):
+    def __init__(self, dim: int, heads: int = 8, dropout: float = 0.1):
+        super(CrossAttentionLayer, self).__init__() 
         self.heads = heads 
         self.head_dim = dim // heads 
+        self.scale = self.head_dim ** -0.5
 
         self.q_proj = nn.Linear(dim, dim)
         self.k_proj = nn.Linear(dim, dim)
@@ -16,38 +18,115 @@ class CrossAttentionRecommender(nn.Module):
 
         self.dropout = nn.Dropout(dropout)
 
-        self.score = nn.Sequential(
-            nn.Linear(dim, 256),
-            nn.LayerNorm(256),
-            nn.ReLU(),
-            nn.Dropout(dropout),
-            nn.Linear(256, 1),
-            nn.Sigmoid() 
-        ) 
+        # self.score = nn.Sequential(
+        #     nn.Linear(dim, 256),
+        #     nn.LayerNorm(256),
+        #     nn.ReLU(),
+        #     nn.Dropout(dropout),
+        #     nn.Linear(256, 1),
+        #     nn.Sigmoid() 
+        # ) 
 
-    def forward(self, query, key):
+    def forward(self, x: torch.Tensor, context: torch.Tensor) -> torch.Tensor:
         """
         Args:
-            query: 쿼리 임베딩 - 메인 꽃 (B, D)
-            key: 키 임베딩 - 후보 꽃 (B, D)
+            x: 쿼리 임베딩 (batch_size, seq_len_q, dim)
+            context: 키/값 임베딩 (batch_size, seq_len_kv, dim)
             
         Returns:
-            scores: 추천 점수 (B)
+            CA 결과 (batch_size, seq_len_q, dim)
         """
-        batch_size = query.shape[0]
+        batch_size, seq_len_q, _ = x.shape
+        _, seq_len_kv, _ = context.shape
 
-        q = self.q_proj(query).view(batch_size, self.heads, self.head_dim)
-        k = self.k_proj(key).view(batch_size, self.heads, self.head_dim)
-        v = self.v_proj(key).view(batch_size, self.heads, self.head_dim)
+        queries = self.q_proj(x)
+        keys = self.k_proj(context)
+        values = self.v_proj(context)
 
-        attn_scores = torch.einsum('bhd,bhd->bh', q, k) / (self.head_dim ** 0.5)
-        attn_weights = F.softmax(attn_scores, dim=-1)
-        attn_weights = self.dropout(attn_weights)
+        queries = queries.view(batch_size, seq_len_q, self.heads, self.head_dim).transpose(1, 2)
+        keys = keys.view(batch_size, seq_len_kv, self.heads, self.head_dim).transpose(1, 2)
+        values = values.view(batch_size, seq_len_kv, self.heads, self.head_dim).transpose(1, 2)
 
-        attn_output = torch.einsum('bh,bhd->bhd', attn_weights, v)
-        attn_output = attn_output.reshape(batch_size, self.dim)
-        attn_output = self.out_proj(attn_output)
+        dots = torch.matmul(queries, keys.transpose(-1, -2)) * self.scale 
+        attn = F.softmax(dots, dim=-1)
+        attn = self.dropout(attn)
 
-        scores = self.score(attn_output).squeeze(-1)
+        out = torch.matmul(attn, values)
+        out = out.transpose(1, 2).contiguous().view(batch_size, seq_len_q, -1)
 
-        return scores  
+        return self.out_proj(out)  
+
+class FeedForward(nn.Module):
+    
+    def __init__(self, dim: int, hidden_dim: int, dropout: float = 0.1):
+        super(FeedForward, self).__init__()
+        
+        self.net = nn.Sequential(
+            nn.Linear(dim, hidden_dim),
+            nn.GELU(),
+            nn.Dropout(dropout),
+            nn.Linear(hidden_dim, dim),
+            nn.Dropout(dropout)
+        )
+    
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
+        return self.net(x)
+    
+
+class CrossAttentionBlock(nn.Module):
+    def __init__(self, dim: int, heads: int = 8, dropout: float = 0.1):
+        super(CrossAttentionBlock, self).__init__() 
+
+        self.norm1 = nn.LayerNorm(dim)
+        self.norm2 = nn.LayerNorm(dim)
+        self.norm3 = nn.LayerNorm(dim)
+        
+        self.cross_attn = CrossAttentionLayer(dim, heads, dropout)
+    
+        self.ff = FeedForward(dim, dim * 4, dropout)
+
+    
+    def forward(self, x: torch.Tensor, context:torch.Tensor) -> torch.Tensor: 
+
+        x = x + self.cross_attn(self.norm1(x), self.norm2(context))
+        x = x + self.ff(self.norm3(x))
+
+        return x 
+    
+
+class CrossAttentionRecommender(nn.Module):
+    def __init__(self, dim: int = 512, heads: int = 8, dropout: float = 0.1, layers: int = 2):
+        super(CrossAttentionRecommender, self).__init__() 
+
+        self.cross_attn_blocks = nn.ModuleList([
+            CrossAttentionBlock(dim, heads, dropout)
+            for _ in range(layers)
+        ])
+
+        self.score_predictor = nn.Sequential(
+            nn.Linear(dim*2, dim),
+            nn.ReLU(),
+            nn.Dropout(dropout),
+            nn.Linear(dim, 1),
+            nn.Sigmoid() 
+        )
+    
+    def forward(self, main_embedding: torch.Tensor, other_embedding: torch.Tensor) -> torch.Tensor:
+        batch_size = main_embedding.size(0)
+
+        main_emb = main_embedding.unsqueeze(1) # (bs, 1, dim)
+        other_emb = other_embedding.unsqueeze(1)
+
+        for block in self.cross_attn_blocks:
+            other_emb = block(other_emb, main_emb) # main -> other 
+            main_emb = block(main_emb, other_emb) # other -> main 
+
+        
+        main_emb = main_emb.squeeze(1) # (bs, dim)
+        other_emb = other_emb.squeeze(1)
+
+        combined_emb = torch.cat([main_emb, other_emb], dim=1)
+
+        harmony_score = self.score_predictor(combined_emb)
+
+        return harmony_score.squeeze(-1)
