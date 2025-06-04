@@ -126,10 +126,10 @@ def main():
  
     logger.info("Initializing metric learning trainer")
     trainer = MetricLearningTrainer(
-        model_path=None,  # 새 모델 학습
-        img_dim=512,      # CLIP 이미지 임베딩 차원
-        text_dim=512,     # CLIP 텍스트 임베딩 차원
-        output_dim=512,   # 출력 임베딩 차원
+        model_path=None, 
+        img_dim=512,     
+        text_dim=512,    
+        output_dim=512,   
         device=device
     )
 

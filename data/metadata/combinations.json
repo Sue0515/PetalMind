@@ -2,9 +2,9 @@
     {
       "name": "Spring Romance",
       "flowers": [
-        {"id": "flower1", "name": "Pink Peony", "size": "large"},
-        {"id": "flower7", "name": "Lavender Freesia", "size": "medium"},
-        {"id": "flower10", "name": "Baby's Breath", "size": "small"}
+        {"id": "0", "name": "Pink Peony", "size": "large"},
+        {"id": "6", "name": "Lavender Freesia", "size": "medium"},
+        {"id": "9", "name": "Baby's Breath", "size": "small"}
       ],
       "popularity": 98,
       "image_url": "/combinations/spring_romance.jpg"
@@ -12,9 +12,9 @@
     {
       "name": "Classic Elegance",
       "flowers": [
-        {"id": "flower2", "name": "Red Rose", "size": "large"},
-        {"id": "flower6", "name": "White Tulip", "size": "medium"},
-        {"id": "flower11", "name": "Pink Wax Flower", "size": "small"}
+        {"id": "1", "name": "Red Rose", "size": "large"},
+        {"id": "5", "name": "White Tulip", "size": "medium"},
+        {"id": "10", "name": "Pink Wax Flower", "size": "small"}
       ],
       "popularity": 95,
       "image_url": "/combinations/classic_elegance.jpg"
@@ -22,9 +22,9 @@
     {
       "name": "Summer Sunshine",
       "flowers": [
-        {"id": "flower4", "name": "Yellow Sunflower", "size": "large"},
-        {"id": "flower9", "name": "Yellow Daffodil", "size": "medium"},
-        {"id": "flower12", "name": "White Chamomile", "size": "small"}
+        {"id": "3", "name": "Yellow Sunflower", "size": "large"},
+        {"id": "8", "name": "Yellow Daffodil", "size": "medium"},
+        {"id": "11", "name": "White Chamomile", "size": "small"}
       ],
       "popularity": 92,
       "image_url": "/combinations/summer_sunshine.jpg"
@@ -32,9 +32,9 @@
     {
       "name": "Ocean Breeze",
       "flowers": [
-        {"id": "flower3", "name": "Blue Hydrangea", "size": "large"},
-        {"id": "flower8", "name": "Coral Ranunculus", "size": "medium"},
-        {"id": "flower13", "name": "Blue Forget-me-not", "size": "small"}
+        {"id": "2", "name": "Blue Hydrangea", "size": "large"},
+        {"id": "7", "name": "Coral Ranunculus", "size": "medium"},
+        {"id": "12", "name": "Blue Forget-me-not", "size": "small"}
       ],
       "popularity": 90,
       "image_url": "/combinations/ocean_breeze.jpg"
@@ -42,9 +42,9 @@
     {
       "name": "Royal Garden",
       "flowers": [
-        {"id": "flower5", "name": "Purple Dahlia", "size": "large"},
-        {"id": "flower7", "name": "Lavender Freesia", "size": "medium"},
-        {"id": "flower10", "name": "Baby's Breath", "size": "small"}
+        {"id": "4", "name": "Purple Dahlia", "size": "large"},
+        {"id": "6", "name": "Lavender Freesia", "size": "medium"},
+        {"id": "9", "name": "Baby's Breath", "size": "small"}
       ],
       "popularity": 88,
       "image_url": "/combinations/royal_garden.jpg"

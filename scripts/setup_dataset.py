@@ -82,11 +82,10 @@ def create_harmony_groups(metadata: List[Dict[str, Any]], output_path: str) -> L
  
             harmony_score = is_harmonious(large_color, medium_color)
             
-            # 충분히 조화로운 경우 추가
             if harmony_score >= 0.7:
                 harmonious_medium.append(medium_id)
         
-        # 대형 꽃과 조화로운 소형 꽃 찾기
+        # 소형 꽃 찾기
         harmonious_small = []
         for small_id in flowers_by_size['small']:
             small_flower = flowers_map[small_id]
@@ -110,6 +109,8 @@ def create_harmony_groups(metadata: List[Dict[str, Any]], output_path: str) -> L
             count = 0
 
             all_flowers = [large_id] + selected_medium + selected_small
+
+            ##### need to come up with better algorithms 
             for i in range(len(all_flowers)):
                 for j in range(i+1, len(all_flowers)):
                     flower1 = flowers_map[all_flowers[i]]
