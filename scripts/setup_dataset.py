@@ -35,7 +35,7 @@ def verify_flower_images(metadata: List[Dict[str, Any]], image_dir: str) -> List
     
     for flower in metadata:
         flower_id = flower['id']
-        image_path = os.path.join(image_dir, f"{flower_id}.jpg")
+        image_path = os.path.join(image_dir, f"{flower_id}.png")
         
         if not os.path.exists(image_path):
             missing_images.append(flower_id)
@@ -181,7 +181,7 @@ def main():
         logger.warning(f"Missing images for {len(missing_images)} flowers: {missing_images}")
 
 
-    harmony_groups_path = "data/metadata/harmony_groups.json"
+    harmony_groups_path = "../data/metadata/harmony_groups.json"
     logger.info(f"Creating harmony groups in {harmony_groups_path}")
     harmony_groups = create_harmony_groups(metadata, harmony_groups_path)
     

@@ -1,0 +1,296 @@
+[
+  {
+    "main_flower": "0",
+    "medium_flowers": [
+      "7"
+    ],
+    "small_flowers": [
+      "11"
+    ],
+    "harmony_score": 0.77
+  },
+  {
+    "main_flower": "0",
+    "medium_flowers": [
+      "5",
+      "7"
+    ],
+    "small_flowers": [
+      "9",
+      "11",
+      "10"
+    ],
+    "harmony_score": 0.8
+  },
+  {
+    "main_flower": "0",
+    "medium_flowers": [
+      "7",
+      "5"
+    ],
+    "small_flowers": [
+      "10",
+      "9",
+      "11"
+    ],
+    "harmony_score": 0.8
+  },
+  {
+    "main_flower": "0",
+    "medium_flowers": [
+      "7"
+    ],
+    "small_flowers": [
+      "9",
+      "10"
+    ],
+    "harmony_score": 0.79
+  },
+  {
+    "main_flower": "0",
+    "medium_flowers": [
+      "5",
+      "7"
+    ],
+    "small_flowers": [
+      "9",
+      "10"
+    ],
+    "harmony_score": 0.79
+  },
+  {
+    "main_flower": "1",
+    "medium_flowers": [
+      "8",
+      "7"
+    ],
+    "small_flowers": [
+      "10"
+    ],
+    "harmony_score": 0.81
+  },
+  {
+    "main_flower": "1",
+    "medium_flowers": [
+      "7"
+    ],
+    "small_flowers": [
+      "10"
+    ],
+    "harmony_score": 0.84
+  },
+  {
+    "main_flower": "1",
+    "medium_flowers": [
+      "5"
+    ],
+    "small_flowers": [
+      "11",
+      "10"
+    ],
+    "harmony_score": 0.82
+  },
+  {
+    "main_flower": "1",
+    "medium_flowers": [
+      "5"
+    ],
+    "small_flowers": [
+      "12",
+      "11",
+      "9"
+    ],
+    "harmony_score": 0.79
+  },
+  {
+    "main_flower": "1",
+    "medium_flowers": [
+      "5"
+    ],
+    "small_flowers": [
+      "10",
+      "9"
+    ],
+    "harmony_score": 0.82
+  },
+  {
+    "main_flower": "2",
+    "medium_flowers": [
+      "7",
+      "6"
+    ],
+    "small_flowers": [
+      "9",
+      "12",
+      "11"
+    ],
+    "harmony_score": 0.77
+  },
+  {
+    "main_flower": "2",
+    "medium_flowers": [
+      "6"
+    ],
+    "small_flowers": [
+      "9",
+      "12",
+      "11"
+    ],
+    "harmony_score": 0.8
+  },
+  {
+    "main_flower": "2",
+    "medium_flowers": [
+      "8",
+      "5"
+    ],
+    "small_flowers": [
+      "12",
+      "11"
+    ],
+    "harmony_score": 0.79
+  },
+  {
+    "main_flower": "2",
+    "medium_flowers": [
+      "6",
+      "5"
+    ],
+    "small_flowers": [
+      "9",
+      "11",
+      "12"
+    ],
+    "harmony_score": 0.8
+  },
+  {
+    "main_flower": "2",
+    "medium_flowers": [
+      "6",
+      "5"
+    ],
+    "small_flowers": [
+      "12"
+    ],
+    "harmony_score": 0.8
+  },
+  {
+    "main_flower": "3",
+    "medium_flowers": [
+      "5"
+    ],
+    "small_flowers": [
+      "11",
+      "9",
+      "12"
+    ],
+    "harmony_score": 0.79
+  },
+  {
+    "main_flower": "3",
+    "medium_flowers": [
+      "8",
+      "5"
+    ],
+    "small_flowers": [
+      "11",
+      "9"
+    ],
+    "harmony_score": 0.81
+  },
+  {
+    "main_flower": "3",
+    "medium_flowers": [
+      "7",
+      "8"
+    ],
+    "small_flowers": [
+      "11",
+      "9"
+    ],
+    "harmony_score": 0.83
+  },
+  {
+    "main_flower": "3",
+    "medium_flowers": [
+      "5",
+      "8"
+    ],
+    "small_flowers": [
+      "12",
+      "11"
+    ],
+    "harmony_score": 0.79
+  },
+  {
+    "main_flower": "3",
+    "medium_flowers": [
+      "7",
+      "8"
+    ],
+    "small_flowers": [
+      "11"
+    ],
+    "harmony_score": 0.85
+  },
+  {
+    "main_flower": "4",
+    "medium_flowers": [
+      "5",
+      "6"
+    ],
+    "small_flowers": [
+      "12",
+      "9"
+    ],
+    "harmony_score": 0.8
+  },
+  {
+    "main_flower": "4",
+    "medium_flowers": [
+      "5",
+      "6"
+    ],
+    "small_flowers": [
+      "12"
+    ],
+    "harmony_score": 0.8
+  },
+  {
+    "main_flower": "4",
+    "medium_flowers": [
+      "6"
+    ],
+    "small_flowers": [
+      "11",
+      "9",
+      "12"
+    ],
+    "harmony_score": 0.8
+  },
+  {
+    "main_flower": "4",
+    "medium_flowers": [
+      "5",
+      "6"
+    ],
+    "small_flowers": [
+      "12",
+      "9"
+    ],
+    "harmony_score": 0.8
+  },
+  {
+    "main_flower": "4",
+    "medium_flowers": [
+      "6",
+      "5"
+    ],
+    "small_flowers": [
+      "12",
+      "9",
+      "11"
+    ],
+    "harmony_score": 0.8
+  }
+]
