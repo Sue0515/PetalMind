@@ -37,8 +37,11 @@ class MetricLearningTrainer:
         triplet_loss = BatchHardTripletLoss(margin=1.0).to(self.device)
         optimizer = optim.Adam(self.model.parameters(), lr=lr)
         
+        # scheduler = optim.lr_scheduler.ReduceLROnPlateau(
+        #     optimizer, mode='min', factor=0.5, patience=5, verbose=True
+        # )
         scheduler = optim.lr_scheduler.ReduceLROnPlateau(
-            optimizer, mode='min', factor=0.5, patience=5, verbose=True
+            optimizer, mode='min', factor=0.5, patience=5
         )
         
         history = {

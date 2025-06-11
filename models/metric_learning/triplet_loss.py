@@ -64,4 +64,5 @@ class BatchHardTripletLoss(nn.Module):
         if active_triplets > 0:
             return triplet_loss.sum() / active_triplets
         else:
-            return torch.tensor(0.0, device=embeddings.device)
+            # return torch.tensor(0.0, device=embeddings.device)
+            return triplet_loss.sum() * 0.0

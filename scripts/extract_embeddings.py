@@ -34,7 +34,7 @@ def extract_embeddings(metadata: List[Dict[str, Any]],
 
     for flower in progress_bar:
         flower_id = flower['id']
-        image_path = os.path.join(image_dir, f"{flower_id}.jpg")
+        image_path = os.path.join(image_dir, f"{flower_id}.png")
         description = flower['description']
  
         if not os.path.exists(image_path):

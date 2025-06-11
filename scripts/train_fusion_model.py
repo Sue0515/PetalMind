@@ -100,7 +100,8 @@ def main():
     harmony_groups_path = "data/metadata/harmony_groups.json"
     model_save_path = "models/weights/embedding_fusion.pth"
 
-    batch_size = 32
+    # batch_size = 32
+    batch_size = 4 
     learning_rate = 0.001
     epochs = 50
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
