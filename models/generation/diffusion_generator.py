@@ -7,7 +7,9 @@ from diffusers import StableDiffusionPipeline, DPMSolverMultistepScheduler
 
 class FlowerArrangementGenerator:
     
-    def __init__(self, model_id: str = "runwayml/stable-diffusion-v1-5", 
+    # def __init__(self, model_id: str = "runwayml/stable-diffusion-v1-5", 
+    #              device: str = None, output_dir: str = "data/generated"):
+    def __init__(self, model_id: str = 'GSV1510/sd-flower-diffusion-32px', 
                  device: str = None, output_dir: str = "data/generated"):
        
         if device is None:
