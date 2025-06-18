@@ -134,7 +134,7 @@ class StableDiffusionTrainer:
         )
         self.noise_scheduler = DDPMScheduler.from_pretrained(
             self.args.pretrained_model_name,
-            subfulder='scheduler'
+            subfolder='scheduler'
         )
         self.vae.requires_grad_(False) # freeze vae 
 
